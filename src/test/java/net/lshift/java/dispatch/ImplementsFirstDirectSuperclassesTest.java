@@ -21,8 +21,8 @@ package net.lshift.java.dispatch;
 import java.io.Serializable;
 import java.util.AbstractSet;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import junit.framework.TestCase;
@@ -39,38 +39,46 @@ public class ImplementsFirstDirectSuperclassesTest
 
     public void testDirectSuperClasses()
     {
-	assertEquals
-	    (Arrays.asList
-	     (new Class [] { Set.class,
-			     Cloneable.class,
-			     Serializable.class, 
-			     AbstractSet.class }),
-	     ImplementsFirstDirectSuperclasses.
-	     SUPERCLASSES.directSuperclasses(HashSet.class));
+        assertEquals
+            (Arrays.asList
+             (new Class [] { Set.class,
+                             Cloneable.class,
+                             Serializable.class,
+                             AbstractSet.class }),
+             ImplementsFirstDirectSuperclasses.
+             SUPERCLASSES.directSuperclasses(HashSet.class));
+    }
+
+    public void testCollection()
+    throws Exception
+    {
+        Iterable<Class<?>> linearization = JavaC3.allSuperclasses
+                (Collection.class,ImplementsFirstDirectSuperclasses.SUPERCLASSES);
+        System.out.println("Collection: " + linearization);
     }
 
     public void testSet()
-	throws Exception
-    {
-	List linearization = JavaC3.allSuperclasses
-	    (Set.class,ImplementsFirstDirectSuperclasses.SUPERCLASSES);
-	System.out.println("Set: " + linearization);
-    }
+            throws Exception
+        {
+            Iterable<Class<?>> linearization = JavaC3.allSuperclasses
+                    (Set.class,ImplementsFirstDirectSuperclasses.SUPERCLASSES);
+            System.out.println("Set: " + linearization);
+        }
 
     public void testAbstractSet()
-	throws Exception
+        throws Exception
     {
-	List linearization = JavaC3.allSuperclasses
-	    (AbstractSet.class, ImplementsFirstDirectSuperclasses.SUPERCLASSES);
-	System.out.println("AbstractSet: " + linearization);
-	
+        Iterable<Class<?>> linearization = JavaC3.allSuperclasses
+            (AbstractSet.class, ImplementsFirstDirectSuperclasses.SUPERCLASSES);
+        System.out.println("AbstractSet: " + linearization);
+
     }
 
 //    public void testHashSet()
-//	throws Exception
+//      throws Exception
 //    {
-//	List linearization = JavaC3.allSuperclasses
-//	    (HashSet.class, ImplementsFirstDirectSuperclasses.SUPERCLASSES);
-//	System.out.println("HashSet: " + linearization);
+//      List linearization = JavaC3.allSuperclasses
+//          (HashSet.class, ImplementsFirstDirectSuperclasses.SUPERCLASSES);
+//      System.out.println("HashSet: " + linearization);
 //    }
 }
