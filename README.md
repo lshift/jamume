@@ -72,7 +72,7 @@ readily into an imperative language.
 
 To use the algorithm, everything must be a type - classes, interfaces,
 and primitive types are all types. We need to generate a list of
-super-types for all types in the system.  2.1.1 Supertypes for objects
+super-types for all types in the system.
 
 In dylan, you list your superclasses, and its this order that the
 linearization uses. In java, you list the interfaces you implement,
