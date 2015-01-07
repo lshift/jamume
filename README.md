@@ -1,6 +1,6 @@
-
 Multiple Dynamic Dispatch for Java
 ==================================
+
 Licensing
 ---------
 
@@ -110,4 +110,8 @@ Supertypes for arrays and primitive types
 
 Arrays work exactly as assignability would suggest they do.
 
-Primitive types work through java's notion of a widening conversion.
+Primitive types work through Java's notion of a widening conversion.
+
+More info
+------------
+See http://www.lshift.net/blog/2006/06/23/multimethods-for-java/
