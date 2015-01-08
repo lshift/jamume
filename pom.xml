@@ -3,10 +3,11 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.lshift</groupId>
-  <artifactId>java</artifactId>
+  <artifactId>jamume</artifactId>
+  <version>3.0</version>
   <packaging>jar</packaging>
   <name>Java multiple dynamic dispatch library</name>
-  <url>https://bitbucket.org/lshift/java-multimethods/</url>
+  <url>https://github.com/lshift/jamume</url>
   <scm>
     <url>https://hg@bitbucket.org/lshift/java-multimethods</url>
   </scm>
@@ -24,14 +25,6 @@
     </dependency>
   </dependencies>
   <build>
-    <extensions>
-      <!--  this is how we publish components internally -->
-      <extension>
-        <groupId>org.apache.maven.wagon</groupId>
-        <artifactId>wagon-webdav</artifactId>
-        <version>1.0-beta-2</version>
-      </extension>
-    </extensions>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -45,9 +38,9 @@
         <version>2.4.2</version>
       </plugin>
       <plugin>
-          <!-- Entry needed to create, install and deploy sources jars -->
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-source-plugin</artifactId>
+        <!-- Entry needed to create, install and deploy sources jars -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
       </plugin>
     </plugins>
     <sourceDirectory>${basedir}/src</sourceDirectory>
@@ -55,12 +48,4 @@
     <outputDirectory>${basedir}/build/classes</outputDirectory>
     <testOutputDirectory>${basedir}/build/test/classes</testOutputDirectory>
   </build>
-  <distributionManagement>
-    <repository>
-      <id>lshift</id>
-      <name>LShift Internal Repository</name>
-      <url>dav:https://mvn.lshift.net/mvn</url>
-    </repository>
-  </distributionManagement>
-  <version>3.0</version>
 </project>
