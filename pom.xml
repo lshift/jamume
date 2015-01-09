@@ -7,27 +7,28 @@
   <version>3.0</version>
   <packaging>jar</packaging>
   <name>Java multiple dynamic dispatch library</name>
-  <url>https://github.com/lshift/jamume</url>
+  <url>git@github.com:lshift/jamume.git</url>
   <scm>
-    <url>https://hg@bitbucket.org/lshift/java-multimethods</url>
+    <url></url>
   </scm>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>3.8.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
-    	<groupId>com.google.guava</groupId>
-    	<artifactId>guava</artifactId>
-    	<version>17.0</version>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>17.0</version>
     </dependency>
   </dependencies>
   <build>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
+	<version>3.2</version>
         <configuration>
           <source>1.6</source>
           <target>1.6</target>
@@ -41,11 +42,34 @@
         <!-- Entry needed to create, install and deploy sources jars -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
+	<version>2.4</version>
+      </plugin>
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-gpg-plugin</artifactId>
+	<version>1.5</version>
+	<executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+	</executions>
       </plugin>
     </plugins>
-    <sourceDirectory>${basedir}/src</sourceDirectory>
-    <testSourceDirectory>${basedir}/test/src</testSourceDirectory>
-    <outputDirectory>${basedir}/build/classes</outputDirectory>
-    <testOutputDirectory>${basedir}/build/test/classes</testOutputDirectory>
   </build>
+  <distributionManagement>
+    <repository>
+      <id>oss-sonotype</id>
+      <name>Sonotype OSS repository</name>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+    </repository>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <name>Sonotype OSS repository</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
 </project>
