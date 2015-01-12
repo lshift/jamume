@@ -73,14 +73,14 @@ Maven
 
 A maven artifact is published to central. Include it in your dependencies:
 
-  <dependencies>
-    <dependency>
-      <groupId>net.lshift</groupId>
-      <artifactId>jamume</artifactId>
-      <version>3.0</version>
-    </dependency>
-    ...
-  </dependencies>
+   <dependencies>
+     <dependency>
+       <groupId>net.lshift</groupId>
+       <artifactId>jamume</artifactId>
+       <version>3.0</version>
+     </dependency>
+     ...
+   </dependencies>
 
 
 C3 and Java
