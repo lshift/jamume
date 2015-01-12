@@ -1,6 +1,20 @@
 Multiple Dynamic Dispatch for Java
 ==================================
 
+This implements multiple dynamic dispatch for Java. It's not a new
+programming language, rather it constructs proxies, and then dispatches
+methods to the most specific method in an implementing class. It aims
+to do what the java compiler would do when choosing from several
+overloaded methods, only at run time.
+
+For more information see my blog post:
+
+http://www.lshift.net/blog/2006/06/23/multimethods-for-java/
+
+And go to Github for current development, bugs etc:
+
+https://github.com/lshift/jamume
+
 Licensing
 ---------
 
@@ -30,27 +44,22 @@ For example:
 
     // define an interface
 
-    public interface NumberPredicate
-    {
+    public interface NumberPredicate {
         public boolean evaluate(Number n);
     }
 
     // implement it for some argument types
 
-    public class Exact
-    {
-        public boolean evaluate(Float f)
-        {
+    public class Exact {
+        public boolean evaluate(Float f) {
             return false;
         }
 
-        public boolean evaluate(Double f)
-        {
+        public boolean evaluate(Double f) {
             return false;
         }
 
-        public boolean evaluate(Number n)
-        {
+        public boolean evaluate(Number n) {
             return true;
         }
     }
@@ -58,6 +67,21 @@ For example:
     // create a dynamic dispatcher
 
     NumberPredicate exact = (NumberPredicate)DynamicDispatch.proxy(NumberPredicate.class, new Exact());
+
+Maven
+-----
+
+A maven artifact is published to central. Include it in your dependencies:
+
+  <dependencies>
+    <dependency>
+      <groupId>net.lshift</groupId>
+      <artifactId>jamume</artifactId>
+      <version>3.0</version>
+    </dependency>
+    ...
+  </dependencies>
+
 
 C3 and Java
 -----------
@@ -110,8 +134,4 @@ Supertypes for arrays and primitive types
 
 Arrays work exactly as assignability would suggest they do.
 
-Primitive types work through Java's notion of a widening conversion.
-
-More info
-------------
-See http://www.lshift.net/blog/2006/06/23/multimethods-for-java/
+Supertypes for primitive types correspond to Java's notion of a widening conversion.

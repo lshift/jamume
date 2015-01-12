@@ -7,9 +7,26 @@
   <version>3.0</version>
   <packaging>jar</packaging>
   <name>Java multiple dynamic dispatch library</name>
-  <url>git@github.com:lshift/jamume.git</url>
+  <description>See the project URL</description>
+  <developers>
+    <developer>
+      <name>David Ireland</name>
+      <organization>LShift</organization>
+      <organizationUrl>http://www.lshift.net</organizationUrl>
+      <email>david@lshift.net</email>
+    </developer>
+  </developers>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+      <comments>A business-friendly OSS license</comments>
+    </license>
+  </licenses>
+  <url>https://github.com/lshift/jamume</url>
   <scm>
-    <url></url>
+    <url>git@github.com:lshift/jamume.git</url>
   </scm>
   <dependencies>
     <dependency>
@@ -22,6 +39,11 @@
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
       <version>17.0</version>
+    </dependency>
+    <dependency>
+    	<groupId>net.lshift</groupId>
+    	<artifactId>jamume</artifactId>
+    	<version>3.0</version>
     </dependency>
   </dependencies>
   <build>
@@ -57,12 +79,18 @@
             </goals>
           </execution>
 	</executions>
+	<configuration>
+	  <gpgArguments>
+	    <arg>-u</arg>
+	    <arg>74AC580B</arg>
+	  </gpgArguments>
+	</configuration>
       </plugin>
     </plugins>
   </build>
   <distributionManagement>
     <repository>
-      <id>oss-sonotype</id>
+      <id>ossrh</id>
       <name>Sonotype OSS repository</name>
       <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
     </repository>
